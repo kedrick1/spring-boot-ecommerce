@@ -2,6 +2,7 @@ package com.ecommerce.project.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Category {
     private Long categoryId;
 
     @Column(name="category_name")
+    @NotBlank
     private String categoryName;
 
     public Category(Long categoryId, String categoryName) {
