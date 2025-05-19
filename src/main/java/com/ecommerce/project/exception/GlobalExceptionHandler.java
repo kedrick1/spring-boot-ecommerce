@@ -1,6 +1,7 @@
 package com.ecommerce.project.exception;
 
 
+import com.ecommerce.project.dto.APIResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -37,8 +38,14 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(CategoryAlreadyExistsException.class)
-    public ResponseEntity<String> categoryAlreadyExistsException(CategoryAlreadyExistsException e) {
-        String message = e.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<APIResponse> categoryAlreadyExistsException(CategoryAlreadyExistsException e) {
+        APIResponse apiResponse = new APIResponse(e.getMessage(), false);
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(APIException.class)
+    public ResponseEntity<APIResponse> apiException(APIException e) {
+        APIResponse apiResponse = new APIResponse(e.getMessage(), false);
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
 }
