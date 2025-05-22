@@ -1,14 +1,10 @@
-package com.ecommerce.project.service;
+package com.ecommerce.project.services;
 
 //promotes loose coupling
 
 
-import com.ecommerce.project.dto.CategoryDTO;
-import com.ecommerce.project.dto.CategoryResponse;
-import com.ecommerce.project.model.Category;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.ecommerce.project.dtos.CategoryDTO;
+import com.ecommerce.project.dtos.CategoryResponse;
 
 
 public interface CategoryService {
