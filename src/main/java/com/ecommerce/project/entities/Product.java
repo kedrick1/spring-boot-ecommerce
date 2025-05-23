@@ -18,6 +18,9 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "product_description")
     private String productDescription;
 
@@ -27,6 +30,9 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "discount")
+    private Double discount;
+
     @Column(name = "special_price")
     private double specialPrice;
 
@@ -34,11 +40,13 @@ public class Product {
     @JoinColumn(name = "category_id") //owns relationship
     private Category category;
 
-    public Product(String productName, String productDescription, Integer quantity, Double price, double specialPrice, Category category) {
+    public Product(String productName, String image, String productDescription, Integer quantity, Double price, double discount, double specialPrice, Category category) {
         this.productName = productName;
+        this.image = image;
         this.productDescription = productDescription;
         this.quantity = quantity;
         this.price = price;
+        this.discount = discount;
         this.specialPrice = specialPrice;
         this.category = category;
     }
