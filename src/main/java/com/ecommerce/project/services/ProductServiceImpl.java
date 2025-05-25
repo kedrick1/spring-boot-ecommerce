@@ -5,6 +5,7 @@ import com.ecommerce.project.dtos.ProductDTO;
 import com.ecommerce.project.dtos.ProductResponse;
 import com.ecommerce.project.entities.Category;
 import com.ecommerce.project.entities.Product;
+import com.ecommerce.project.exceptions.ProductAlreadyExistsException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
 import com.ecommerce.project.repositories.CategoryRepository;
 import com.ecommerce.project.repositories.ProductRepository;
@@ -46,8 +47,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO addProduct(ProductDTO productDTO, Long categoryId) {
 
+
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
+
+
+        boolean exists = productRepository.existsByProductNameAndCategory_CategoryId( productDTO.getProductName(), categoryId);
+        if (exists) {
+            throw new ProductAlreadyExistsException("Product with name '" + productDTO.getProductName() + "' already exists in this category.");
+        }
 
         Product product = modelMapper.map(productDTO, Product.class);
         product.setImage("default.png");
