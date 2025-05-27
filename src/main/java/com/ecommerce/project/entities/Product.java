@@ -2,6 +2,8 @@ package com.ecommerce.project.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,12 +18,16 @@ public class Product {
     private Long productId;
 
     @Column(name = "product_name")
+    @NotBlank
+    @Size(min = 3, message = "Product name must contain at least 3 characters")
     private String productName;
 
     @Column(name = "image")
     private String image;
 
     @Column(name = "product_description")
+    @NotBlank
+    @Size(min = 6, message = "Product description must contain at least 6 characters")
     private String productDescription;
 
     @Column(name = "quantity")
