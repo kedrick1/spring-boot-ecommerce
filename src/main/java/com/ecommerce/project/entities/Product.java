@@ -6,10 +6,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "product")
+@ToString
 public class Product {
 
     @Id
@@ -45,6 +48,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id") //owns relationship
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private AppUser appUser;
 
     public Product(String productName, String image, String productDescription, Integer quantity, Double price, double discount, double specialPrice, Category category) {
         this.productName = productName;
