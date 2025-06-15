@@ -58,7 +58,7 @@ public class AppUser {
     private Set<Role> roles = new HashSet<>();
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+    @OneToMany(mappedBy = "appUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE},
     orphanRemoval = true)
     private Set<Product> products;
 
