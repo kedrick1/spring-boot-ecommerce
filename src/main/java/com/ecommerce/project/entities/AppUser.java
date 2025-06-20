@@ -58,7 +58,7 @@ public class AppUser {
     private Set<Role> roles = new HashSet<>();
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "app_user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @OneToOne(mappedBy = "appUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private Cart cart;
 
 

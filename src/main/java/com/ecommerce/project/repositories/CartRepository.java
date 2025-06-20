@@ -8,4 +8,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     @Query("SELECT c FROM Cart c WHERE c.appUser.email = ?1")
     Cart findCartByEmail(String email);  //will need to define since accessing param of param, jpa doesnt automatically generate queries for nested objects fields
+
+    @Query("SELECT c FROM Cart c WHERE c.appUser.email = ?1 AND c.cartId = ?2")
+    Cart findCartByEmailAndCartId(String emailId, Long cartId);
 }
