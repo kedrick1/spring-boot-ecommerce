@@ -52,8 +52,9 @@ public class Address {
     private String postalCode;
 
     @ToString.Exclude
-    @ManyToMany(mappedBy = "addresses")
-    private List<AppUser> appUsers = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private AppUser appUser;
 
     public Address(String street, String buildingName, String city, String province, String country, String postalCode) {
         this.street = street;
